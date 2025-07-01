@@ -25,3 +25,9 @@ st.dataframe(df)
 
 cur.close()
 conn.close()
+
+
+ticker = st.selectbox("Select a Ticker", df["Ticker"].unique())
+filtered = df[df["Ticker"] == ticker].sort_values("Date")
+
+st.line_chart(filtered.set_index("Date")[["Close"]])
